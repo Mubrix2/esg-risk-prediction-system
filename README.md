@@ -1,5 +1,5 @@
 # esg-risk-prediction
-End-to-end ESG risk prediction ML project with FastAPI deployment.
+End-to-end ESG risk prediction system using machine learning and FastAPI.
 
 Project Title
 ESG Risk Prediction System
