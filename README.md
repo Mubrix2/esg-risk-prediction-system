@@ -1,23 +1,18 @@
 # esg-risk-prediction
-End-to-end ESG risk prediction system using machine learning and FastAPI.
 
-Project Title
-ESG Risk Prediction System
+An end-to-end machine learning system that predicts ESG risk scores for companies using ESG indicators.
+The project covers data preprocessing, model training, evaluation, and deployment via a FastAPI service.
 
-Project Overview
-Short description: “End-to-end ML system that predicts ESG risk scores for Fortune 500 companies using ESG metrics and deploys a real-time API.”
+## Dataset
+- Source: Mendeley ESG Dataset
+- Time range: 2012–2021
+- Companies: Publicly traded US industrial companies
 
-Dataset
-Link to Hugging Face dataset used.
+## Tech Stack
+- Python
+- Pandas, NumPy, Scikit-learn
+- FastAPI
+- GitHub
 
-
-Key Features
-Data preprocessing & feature engineering
-Baseline + improved regression models
-Real-time API deployment with FastAPI
-
-Demo / URL
-Add the deployed API URL once ready.
-
-Instructions
-How to clone, install dependencies, and run locally.
+## Project Status
+🚧 In progress
