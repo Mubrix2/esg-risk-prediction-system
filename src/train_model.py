@@ -7,8 +7,8 @@ import numpy as np
 
 # Config
 DATA_PATH = "../data/processed/esg_processed.csv"
-MODEL_PATH = "esg_risk_model.pkl"
-TARGET = "ESG_Score"  # adjust if needed
+MODEL_PATH = "../model/esg_risk_model.pkl"
+TARGET = "ESG_Score" 
 
 
 def train():

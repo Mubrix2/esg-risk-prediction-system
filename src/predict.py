@@ -1,3 +1,11 @@
+import pandas as pd
+import joblib
+
+MODEL_PATH = "../model/esg_risk_model.pkl" 
+
+# Load model once (IMPORTANT for performance)
+model = joblib.load(MODEL_PATH)
+
 def predict_esg(input_data: dict):
     df = pd.DataFrame([input_data])
     # Optional: reorder columns to match training
