@@ -1,18 +1,30 @@
-import pandas as pd
+# src/predict.py
+
+import os
 import joblib
+import pandas as pd
 
-MODEL_PATH = "../model/esg_risk_model.pkl" 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH = os.path.join(BASE_DIR, "model", "esg_pipeline.pkl")
 
-# Load model once (IMPORTANT for performance)
-model = joblib.load(MODEL_PATH)
+# Load once (fast)
+bundle = joblib.load(MODEL_PATH)
+pipeline = bundle["pipeline"]
+FEATURES = bundle["features"]
 
 def predict_esg(input_data: dict):
     df = pd.DataFrame([input_data])
-    # Optional: reorder columns to match training
-    df = df[[
-        "Env_score", "Social_score", "Gov_score", "PE_RATIO", "FNCL_LVRG",
-        "RETURN_ON_ASSET", "ASSET_GROWTH", "QUICK_RATIO", "BVPS",
-        "Net_income", "Shares", "Market_cap", "Total_assets"
-    ]]
-    prediction = model.predict(df)[0]
-    return float(prediction)
+
+    # Ensure all expected features exist
+    missing = set(FEATURES) - set(df.columns)
+    for col in missing:
+        df[col] = 0.0  # safe default
+
+    # Drop extra columns
+    df = df[FEATURES]
+
+    prediction = pipeline.predict(df)[0]
+
+    return {
+        "ESG_score_prediction": round(float(prediction), 2)
+    }
